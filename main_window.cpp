@@ -5,10 +5,10 @@
 
 MainWindow::MainWindow()
 {
-    createActions();
-    //createToolbox();
-    createMenus();
-    createToolbars();
+    create_actions();
+    create_menus();
+    //create_toolbars();
+    //create_toolbox();
 
     // central_widget
     // -m_main_layout
@@ -28,7 +28,6 @@ MainWindow::MainWindow()
     m_splitter->setOrientation(Qt::Horizontal);
 
     m_main_layout->addWidget(m_splitter);
-
 
     // initialize toolbox
     m_toolbox = new QWidget;
@@ -59,22 +58,41 @@ MainWindow::MainWindow()
     setWindowTitle(tr("Knittr"));
 }
 
-void MainWindow::createActions()
+void MainWindow::create_actions()
+{
+    m_quit_action = new QAction(tr("E&xit"), this);
+    m_quit_action->setShortcuts(QKeySequence::Quit);
+    connect(m_quit_action, &QAction::triggered, this, &MainWindow::close);
+
+    m_about_action = new QAction(tr("&About Knittr"), this);
+    connect(m_about_action, &QAction::triggered, this, &MainWindow::about);
+}
+
+void MainWindow::create_menus()
+{
+    m_file_menu = menuBar()->addMenu(tr("&File"));
+    m_file_menu->addAction(m_quit_action);
+
+    m_edit_menu = menuBar()->addMenu(tr("&Edit"));
+
+    m_help_menu = menuBar()->addMenu(tr("&Help"));
+    m_help_menu->addAction(m_about_action);
+
+}
+
+void MainWindow::create_toolbars()
 {
 
 }
 
-void MainWindow::createToolbox()
+void MainWindow::create_toolbox()
 {
 
 }
 
-void MainWindow::createMenus()
+void MainWindow::about()
 {
-
-}
-
-void MainWindow::createToolbars()
-{
-
+    QMessageBox::about(this, tr("About Knittr"),
+                       tr("Simply the <b>best</b> knitting utility "
+                          "software out there."));
 }
