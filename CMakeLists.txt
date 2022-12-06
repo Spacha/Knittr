@@ -23,7 +23,8 @@ set(PROJECT_SOURCES
         main_window.h
         pattern_scene.cpp
         pattern_scene.h
-        main_window.ui
+        grid_item.cpp
+        grid_item.h
         ${TS_FILES}
 )
 

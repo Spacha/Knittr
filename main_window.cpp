@@ -1,7 +1,7 @@
+#include <QtWidgets>
+
 #include "main_window.h"
 #include "pattern_scene.h"
-
-#include <QtWidgets>
 
 MainWindow::MainWindow()
 {
@@ -31,7 +31,8 @@ MainWindow::MainWindow()
 
     // initialize toolbox
     m_toolbox = new QWidget;
-    m_toolbox->setMinimumSize(QSize(200, 0));
+    m_toolbox->setMinimumWidth(200);
+    m_toolbox->setMaximumWidth(600);
     auto *toolbox_layout = new QVBoxLayout(m_toolbox);
     toolbox_layout->setAlignment(Qt::AlignTop);
 
@@ -44,7 +45,7 @@ MainWindow::MainWindow()
 
     // initialize pattern scene
     m_scene = new PatternScene(this);
-    m_scene->setSceneRect(QRectF(0, 0, 5000, 5000));
+    m_scene->setSceneRect(QRectF(0, 0, 1000, 1000));
 
     m_view = new QGraphicsView(m_scene);
     m_splitter->addWidget(m_view);
