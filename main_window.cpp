@@ -78,7 +78,6 @@ void MainWindow::create_menus()
 
     m_help_menu = menuBar()->addMenu(tr("&Help"));
     m_help_menu->addAction(m_about_action);
-
 }
 
 void MainWindow::create_toolbars()
